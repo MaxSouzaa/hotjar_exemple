@@ -28,6 +28,9 @@ jobs:
       - name: install firebase CLI
         run: npm install firebase
         
+      - name: build app
+        run: flutter build web
+        
       - name: Deploy to firebase
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
