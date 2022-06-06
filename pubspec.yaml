@@ -16,6 +16,7 @@ dependencies:
   animations: ^2.0.2
   loading_gifs: ^0.3.0
   firebase_core: ^1.17.1
+  hotjar: ^0.1.0
 
 
 dev_dependencies:

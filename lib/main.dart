@@ -5,11 +5,15 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import "package:hotjar/hotjar.dart";
 
 void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  loadHotjar("3006581");
+  trigger("my-poll");
+  tagRecording(["tag1", "tag2"]);
   runApp(const MyApp());
 
 
