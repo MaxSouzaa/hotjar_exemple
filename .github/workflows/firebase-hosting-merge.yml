@@ -22,6 +22,12 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
         
+      - name: Install npm
+        run: npm install -g npm
+        
+      - name: install firebase CLI
+        run: npm install firebase
+        
       - name: Deploy to firebase
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
