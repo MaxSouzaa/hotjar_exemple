@@ -10,11 +10,32 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: flutter build web
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.0.1'
+          channel: 'stable'
+
+      - name: Install dependencies
+        run: flutter pub get
+        
+      - name: Install npm
+        run: npm install -g npm
+        
+      - name: install firebase CLI
+        run: npm install firebase
+        
+      - name: build app
+        run: flutter build web
+        
+      - name: Deploy to firebase
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_EXEMPLO_92AED }}'
           channelId: live
           projectId: exemplo-92aed
+      
